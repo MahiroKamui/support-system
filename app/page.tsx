@@ -1,14 +1,24 @@
-import {Button} from "@/components/ui/button";
-import {Card} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { db } from "@/db"
+import { users } from "@/db/schema"
 
 
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center font-sans">
+export default async function Home() {
+    const getUsers = await db.select().from(users)
+
+    return (
+    <div>
       <h1>IT Support System</h1>
       <span>this is for putting problems on the db</span>
-      <Card className="bg-red-200">This is a card.</Card>
-      <Button>hello</Button>
+        {
+            getUsers.map(user => (
+                <Card key={user.id} className="w-80 flex flex-column m-2 items-center">
+                    <div>User: {user.name}</div>
+                    <div>Email: {user.email}</div>
+                </Card>
+            ))
+        }
     </div>
   );
 }
