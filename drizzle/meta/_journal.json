@@ -8,6 +8,13 @@
       "when": 1793688576323,
       "tag": "0000_striped_puma",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793779438297,
+      "tag": "0001_loose_pandemic",
+      "breakpoints": true
     }
   ]
 }
